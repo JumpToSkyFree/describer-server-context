@@ -12,3 +12,4 @@
 export * from './contexts/ServerContext'
 export * from './hooks/useConsumeServerContext'
 export * from './hooks/useServerContext'
+export * from './hooks/useRegisterServerContext'

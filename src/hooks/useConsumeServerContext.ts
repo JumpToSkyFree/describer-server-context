@@ -7,9 +7,12 @@ export default function useConsumeServerContext<ContextType>(
   id: string
 ): [ContextType, (updater: UpdaterType<ContextType>) => void, () => void] {
   const serverContext = useContext(ServerContext)
-  if (!(serverContext && id in serverContext?.contexts))
+
+  if (!serverContext) throw Error(`Server context is not initialized.`)
+
+  if (!(id in serverContext?.contexts))
     throw Error(
-      `Can't consume a server context that is not initialized. Either try to pass context in parent components or assign ${id} identifier int he context.`
+      `Try to pass context in parent components or assign ${id} identifier in the context.`
     )
 
   function update(updater: UpdaterType<ContextType>) {
