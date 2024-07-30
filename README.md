@@ -2,7 +2,7 @@
 
 > A Describer library that allows you to pass and manage a context of data coming from an API or a Server.
 
-With describer-server-context you can pass specific data coming from a server down to the components tree
+With describer-server-context you can pass specific data coming from a server down to the components tree.
 
 [![NPM](https://img.shields.io/npm/v/describer-server-context.svg)](https://www.npmjs.com/package/describer-server-context) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
