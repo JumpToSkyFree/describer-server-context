@@ -35,7 +35,10 @@ function ChildComponent() {
 function App() {
   const [apiData, setAPIData] = useState(null);
   const serverContext = useServerContext({
-    'apiData': apiData
+    initialValue: {
+      'apiData': apiData
+    },
+    dependencies: [appData]
   });
 
   useEffect(() => {
@@ -67,7 +70,10 @@ function ChildComponent() {
 function App() {
   const apiData = useLoaderData<typeof loader>();
   const serverContext = useServerContext({
-    'apiData': apiData
+    initialValue: {
+      'apiData': apiData
+    },
+    dependencies: [appData]
   });
 
   useEffect(() => {
