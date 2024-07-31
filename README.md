@@ -38,7 +38,7 @@ function App() {
     initialValue: {
       'apiData': apiData
     },
-    dependencies: [appData]
+    dependencies: [apiData]
   });
 
   useEffect(() => {
@@ -73,7 +73,7 @@ function App() {
     initialValue: {
       'apiData': apiData
     },
-    dependencies: [appData]
+    dependencies: [apiData]
   });
 
   useEffect(() => {
