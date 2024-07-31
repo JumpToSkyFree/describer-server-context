@@ -16,7 +16,7 @@ function ServerContextIdConsumer() {
       <p>{context.data}</p>
       <button
         onClick={() =>
-          update((old) => {
+          update(() => {
             return {
               data: 'something'
             }
@@ -31,10 +31,14 @@ function ServerContextIdConsumer() {
 
 function ServerIdContext() {
   const [contexts, updateContext] = useServerContext({
-    endpoint1: {
-      data: 'string'
-    }
+    initialValue: {
+      endpoint1: {
+        data: 'something'
+      }
+    },
+    dependencies: []
   })
+
   return (
     <ServerContext.Provider
       value={{
@@ -53,10 +57,10 @@ describe('Consume server context', () => {
     expect(screen.getByText('string')).toBeTruthy()
   })
 
-  it('is updated', async () => {
+  it('is updated', () => {
     render(<ServerIdContext />)
-    await userEvent.click(screen.getByText('Click here'))
+    userEvent.click(screen.getByText('Click here'))
 
-    expect(screen.getByText('string')).toBeTruthy()
+    expect(screen.getByText('something')).toBeTruthy()
   })
 })

@@ -1,13 +1,18 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IServerContext } from '../contexts/ServerContext'
 
-export default function useServerContext(
+export default function useServerContext(ctx: {
   initialValue?: IServerContext['contexts']
-): [IServerContext['contexts'], IServerContext['updateContext']] {
-  const [serverContext, setServerContext] = useState<
+  dependencies?: Array<any>
+}): [IServerContext['contexts'], IServerContext['updateContext']] {
+  const [serverContext, setServerContexts] = useState<
     IServerContext['contexts']
-  >(initialValue ?? {})
+  >(ctx.initialValue ?? {})
 
-  return [serverContext as IServerContext['contexts'], setServerContext]
+  useEffect(() => {
+    if (ctx.initialValue) setServerContexts(ctx.initialValue)
+  }, ctx.dependencies)
+
+  return [serverContext as IServerContext['contexts'], setServerContexts]
 }
